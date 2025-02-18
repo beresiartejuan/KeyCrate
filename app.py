@@ -11,6 +11,9 @@ app = Flask(__name__)
 app = Flask(__name__, static_url_path="/static")
 app.secret_key = SECRET_KEY
 
+HOST = "0.0.0.0"
+DEFAULT_PORT = 5000
+
 
 def get_db_connection():
     conn = sqlite3.connect("KeyCrate.db")
@@ -294,4 +297,4 @@ def page_not_found(error):
 import os
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=os.environ.get("PORT", 5000))
+    app.run(host=HOST, port=os.environ.get("PORT", DEFAULT_PORT))
